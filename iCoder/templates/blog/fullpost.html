@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block head%}
+<style>
+  body {
+    background: linear-gradient(to left, rgb(117, 238, 247), rgb(163, 250, 163));
+  }
+</style>
+{% endblock head %}
+{% block title %}fullpost{% endblock title %}
+
+{% block active %}active{% endblock active %}
+{% block body %}
+<h1>full post</h1>
+{% for post in post %}
+<div class="container bg-grey">
+  <div class="col p-4 d-flex flex-column position-static">
+    <h3 class="mb-0">{{post.title}}</h3>
+    <strong class="d-inline-block mb-2 text-primary">{{post.author}}</strong>
+    <div class="mb-1 text-muted">{{post.tmeStamp}}</div>
+    <p class="card-text mb-auto">{{post.content}}</p>
+
+  </div>
+</div>
+{% if user.is_authenticated %}
+<div class="container">
+  <form action="/blog/postComment" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">
+        <h4>Comment here.</h4>
+      </label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" name="comment"></textarea>
+    </div>
+    <input type="hidden" name="postSno" value="{{post.sno}}">
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+</div>
+{% for i in comments %}
+<div class="container my-4">
+  <div class="row my-2 mx-auto">
+    <div class="col-md-0 bg-info"><img src="/static/admin.png"></div>
+    <div class="col-md-6 text-white bg-dark">{{i.comment}} <br>- {{i.user.username}}</div>
+  </div>
+</div>
+</div>
+{% endfor %}
+{% else %}
+<p>please Login to Post and view Comments</p>
+{% endif %}
+{% endfor %}
+{% endblock body %}

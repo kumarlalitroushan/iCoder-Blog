@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block head%}
+<style>
+body{
+   background: linear-gradient(to left,rgb(117, 238, 247),rgb(177, 253, 209));
+}
+.query{
+    text-align: center;
+}
+</style>
+{% endblock head %}
+{% block title %}search results{% endblock title %}
+
+{% block active %}active{% endblock active %}
+{% block body %}
+<div class="query my-4">
+{% if allpost|length < 1 %}
+<h1>No search results</h1>
+Your search query: <b>{{query}}</b> did not match any documents.<br>
+Suggestions:<br>
+try different keywords.
+{% endif %}
+</div>
+{% for post in allpost %}
+<div class="container bg-grey">
+<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+<div class="col p-4 d-flex flex-column position-static">
+       
+          <h3 class="mb-0">{{post.sno}} . {{post.title}}</h3>
+          <strong class="d-inline-block mb-2 text-primary">{{post.author}}</strong>
+          <div class="mb-1 text-muted">{{post.TimeStamp}}</div>
+          <p class="card-text mb-auto">{{post.content|safe|truncatewords:"30"|linebreaks }}</p>
+          <a href="/blog/{{post.slug}}" class="stretched-link" >Continue reading</a>
+
+        </div>  
+        </div>  
+
+</div>
+{% endfor %}
+{% endblock body %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block head%}
+<style>
+body{
+  background: linear-gradient(-90deg,rgb(117, 238, 247),rgb(163, 250, 163));
+}
+</style>
+{% endblock head %}
+{% block homeactive %}active{% endblock homeactive %}
+{% block title %}home{% endblock title %}
+{% block body %}
+<div class="container my-3">
+  <div class="jumbotron">
+    <h1 class="display-4">Welcome to iCoder</h1>
+    <p class="lead">get every update of upcoming programming technologies</p>
+    <hr class="my-4">
+    <p>In some ways, programming is like painting.</p>
+  </div>
+  <div class="container width="50rem" ml-4rem">
+  <div class="row mb-2 " >
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-200 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">News</strong>
+          <h3 class="mb-0">All About Technology</h3>
+          <p class="card-text mb-auto">Get every news regarding new technologies</p>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img src="/static/robo.jpg" class="card-img-top" alt="..." width="200" height="250">
+            
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-success">Blog</strong>
+          <h3 class="mb-0">All about Blog</h3>
+          
+          <p class="mb-auto">Read/Write and explore the programming world
+          </p>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img src="/static/lapy3.jpg" class="card-img-top" alt="..." width="200" height="250">
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+{% endblock body %}

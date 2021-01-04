@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block head %}
+<style>
+    .container{
+        display: flex;
+        flex-direction: column;
+        border: 2px solid black;
+        text-align: center;
+        width: 25rem;
+        background-color: gray;
+        color: rgb(8, 8, 8);
+    }
+    body{
+        background: linear-gradient(to right,rgb(51, 50, 50),rgb(184, 180, 180),rgb(51, 50, 50));
+    }
+</style>
+{% endblock head %}
+
+{% block title %}
+corona
+{% endblock title %}
+
+{% block body %}
+{% for i in country %}
+<div class="container my-4"style="width:25%">
+<h2>country: {{i.country}}<h2>
+<h3>Total Cases: {{i.cases}}</h3>
+<h3>Recovered: {{i.recovered}}</h3>
+<h3>Deaths: {{i.deaths}}</h3>
+<h3>Today's cases: {{i.todayCases}}</h3>
+
+</div>
+
+{% endfor %}
+{% endblock body %}

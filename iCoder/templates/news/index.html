@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}
+news
+{% endblock title %}
+{% block head %}
+<style>
+body{
+    background: linear-gradient(to right,rgb(207, 202, 202),rgb(85, 216, 233),rgb(207, 202, 202));
+}
+</style>
+{% endblock head %}
+{% block body %}
+<h1>TECH NEWS</h1>
+<div class="container" class="mx-auto" style="width: 500px;">
+{% for x in api.articles %}
+<div class="card" style="width: 30rem  ;">
+  <div class="card-body">
+    <h5 class="card-title">{{x.title}}</h5>
+    <p class="card-text">{{x.description}}</p>
+  </div>
+  <img src="{{x.urlToImage}}" class="card-img-top" alt="...">
+</div>
+<br>
+{% endfor %}
+</div>
+{% endblock body %}
+
